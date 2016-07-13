@@ -4,7 +4,6 @@ metadata:
   name: ${SERVICE_NAME}
   labels:
     name: ${SERVICE_NAME}
-  namespace: pratik
 spec:
   type: NodePort
   ports:
