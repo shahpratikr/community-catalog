@@ -21,13 +21,13 @@ spec:
         env:
         - name: plugins
           value: "${plugins}"
-        - name: jenkins-plugins
-          image: rancher/jenkins-plugins:v0.1.1
-        - name: jenkins-datavolume
-          image: busybox
-          volumeMounts:
-          - name: jenkins-workspace
-            mountPath: /var/jenkins_home/
-        volumes:
+      - name: jenkins-plugins
+        image: rancher/jenkins-plugins:v0.1.1
+      - name: jenkins-datavolume
+        image: busybox
+        volumeMounts:
         - name: jenkins-workspace
-          emptyDir: {}
+          mountPath: /var/jenkins_home/
+      volumes:
+      - name: jenkins-workspace
+        emptyDir: {}
