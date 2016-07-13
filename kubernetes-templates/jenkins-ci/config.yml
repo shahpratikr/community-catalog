@@ -1,0 +1,4 @@
+name: "Jenkins Catalog"
+description: "Jenkins CI Server"
+version: 1.0.0
+category: Continuous Integration

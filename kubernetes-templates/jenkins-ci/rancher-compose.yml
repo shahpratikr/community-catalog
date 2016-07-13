@@ -1,0 +1,19 @@
+.catalog:
+    name: "Jenkins"
+    version: "1.1.0"
+    description: "Jenkins CI management server"
+    questions:
+    - variable: "plugins"
+      label: "List of Jenkins Plugins"
+      default: |
+        credentials
+        greenballs
+        git
+        multijob
+      type: "multiline"
+    - variable: "PORT"
+      type: "int"
+      label: "Port Number"
+      description: "Which port should Jenkins listen on?"
+      default: 8080
+      required: true
