@@ -14,13 +14,13 @@ spec:
         name: ${JENKINS_NAME}
     spec:
       containers:
-      - name: jenkins-primary
+      - env:
+        - name: plugins
+          value: "${plugins}"
+        name: jenkins-primary
         image: jenkins:1.642.2
         ports:
         - containerPort: 8080
-        env:
-        - name: plugins
-          value: "${plugins}"
       - name: jenkins-plugins
         image: rancher/jenkins-plugins:v0.1.1
       - name: jenkins-datavolume
