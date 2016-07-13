@@ -12,22 +12,22 @@ spec:
         metadata:
             labels:
                 name: ${JENKINS_NAME}
-    spec:
-        containers:
-        - name: jenkins-primary
-          image: jenkins:1.642.2
-          ports:
-          - containerPort: 8080
-          env:
-          - name: plugins
-            value: "${plugins}"
-        - name: jenkins-plugins
-          image: rancher/jenkins-plugins:v0.1.1
-        - name: jenkins-datavolume
-          image: busybox
-          volumeMounts:
-          - name: jenkins-workspace
-            mountPath: /var/jenkins_home/
-        volumes:
-        - name: jenkins-workspace
-          emptyDir: {}
+        spec:
+            containers:
+            - name: jenkins-primary
+              image: jenkins:1.642.2
+              ports:
+              - containerPort: 8080
+              env:
+              - name: plugins
+                value: "${plugins}"
+            - name: jenkins-plugins
+              image: rancher/jenkins-plugins:v0.1.1
+            - name: jenkins-datavolume
+              image: busybox
+              volumeMounts:
+              - name: jenkins-workspace
+                mountPath: /var/jenkins_home/
+            volumes:
+            - name: jenkins-workspace
+              emptyDir: {}
