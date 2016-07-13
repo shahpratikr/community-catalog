@@ -4,6 +4,7 @@ metadata:
   name: ${JENKINS_NAME}
   labels:
     name: ${JENKINS_NAME}
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -19,12 +20,28 @@ spec:
           value: "${plugins}"
         name: jenkins-primary
         image: jenkins:1.642.2
+        imagePullPolicy: IfNotPresent
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - cp
+              - /usr/share/jenkins/jenkins.war
+              - /var/jenkins_home/
         ports:
         - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/jenkins_home/
+          name: jenkins-workspace
+
       - name: jenkins-plugins
         image: rancher/jenkins-plugins:v0.1.1
+        imagePullPolicy: IfNotPresent
+
       - name: jenkins-datavolume
         image: busybox
+        imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: jenkins-workspace
           mountPath: /var/jenkins_home/
