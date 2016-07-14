@@ -17,7 +17,7 @@ spec:
       containers:
       - env:
         - name: plugins
-          value: "${plugins}"
+          value: "greenballs"
         name: jenkins-primary
         image: jenkins:1.642.2
         imagePullPolicy: IfNotPresent
