@@ -9,7 +9,6 @@
         credentials
         greenballs
         git
-        multijob
       type: "multiline"
     - variable: "PORT"
       type: "int"
