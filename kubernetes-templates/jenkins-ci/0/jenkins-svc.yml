@@ -5,7 +5,7 @@ metadata:
   labels:
     name: ${SERVICE_NAME}
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: ${PORT}
   selector:

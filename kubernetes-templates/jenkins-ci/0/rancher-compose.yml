@@ -3,7 +3,7 @@
     version: "1.1.0"
     description: "Jenkins CI management server"
     questions:
-    - variable: "plugins"
+    - variable: "PLUGINS"
       label: "List of Jenkins Plugins"
       default: |
         credentials

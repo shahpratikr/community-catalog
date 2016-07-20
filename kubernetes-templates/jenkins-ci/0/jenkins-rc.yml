@@ -16,18 +16,11 @@ spec:
     spec:
       containers:
       - env:
-        - name: plugins
+        - name: PLUGINS
           value: "${plugins}"
         name: jenkins-primary
         image: jenkins:1.642.2
-        imagePullPolicy: IfNotPresent
-        lifecycle:
-          postStart:
-            exec:
-              command:
-              - cp
-              - /usr/share/jenkins/jenkins.war
-              - /var/jenkins_home/
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
           protocol: TCP
@@ -37,14 +30,7 @@ spec:
 
       - name: jenkins-plugins
         image: rancher/jenkins-plugins:v0.1.1
-        imagePullPolicy: IfNotPresent
-
-      - name: jenkins-datavolume
-        image: busybox
-        imagePullPolicy: IfNotPresent
-        volumeMounts:
-        - name: jenkins-workspace
-          mountPath: /var/jenkins_home/
+        imagePullPolicy: Always
       volumes:
       - name: jenkins-workspace
         emptyDir: {}
