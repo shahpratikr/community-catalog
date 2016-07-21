@@ -1,23 +1,23 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: ${JENKINS_NAME}
+  name: jenkins
   labels:
-    name: ${JENKINS_NAME}
+    name: jenkins
   namespace: default
 spec:
   replicas: 1
   selector:
-    name: ${JENKINS_NAME}
+    name: jenkins
   template:
     metadata:
       labels:
-        name: ${JENKINS_NAME}
+        name: jenkins
     spec:
       containers:
       - env:
         - name: PLUGINS
-          value: "${plugins}"
+          value: "${PLUGINS}"
         name: jenkins-primary
         image: jenkins:1.642.2
         imagePullPolicy: Always
@@ -31,6 +31,11 @@ spec:
       - name: jenkins-plugins
         image: rancher/jenkins-plugins:v0.1.1
         imagePullPolicy: Always
+      - image: busybox
+        name: jenkins-datavolume
+        volumeMounts:
+        - mountPath: /var/jenkins_home/
+          name: jenkins-workspace
       volumes:
       - name: jenkins-workspace
         emptyDir: {}
