@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: reaction
+  name: "reaction"
+  namespace: "default"
+spec:
+  replicas: 1
+  selector:
+    name: reaction
+  template:
+    metadata:
+      labels:
+        name: reaction
+    spec:
+      restartPolicy: Always
+      containers:
+      - image: "reactioncommerce/reaction"
+        imagePullPolicy: IfNotPresent
+        name: "reaction"
+        ports:
+        - containerPort: ${PORT}
+        env:
+        - name: ROOT_URL
+          value: ${ROOT_URL}
+        - name: MONGO_URL
+          value: ${MONGO_URL}
+        - name: MAIL_URL
+          value: ${MAIL_URL}
+        - name: REACTION_USER
+          value: ${REACTION_USER}
+        - name: REACTION_AUTH
+          value: ${REACTION_AUTH}
+        - name: REACTION_EMAIL
+          value: ${REACTION_EMAIL}
+        volumeMounts:
+        - name: mongo-data
+          mountPath: /data/db
+      - name: mongo
+        image: mongo
+        command:
+        - mongod
+        - --storageEngine=wiredTiger
+        imagePullPolicy: IfNotPresent
+      volumes:
+      - name: mongo-data
+        emptyDir: {}
