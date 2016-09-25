@@ -13,11 +13,6 @@
       required: true
       type: "string"
       default: mongodb://localhost:27017/reaction
-    - variable: "MAIL_URL"
-      label: "Mail URL"
-      required: true
-      default: "smtp://gshilamkar@infracloud.io:Mob9922!@smtp.gmail.com:465"
-      type: "string"
     - variable: "REACTION_USER"
       label: "Username for reaction UI"
       required: true
@@ -26,7 +21,7 @@
     - variable: "REACTION_AUTH"
       label: "Password for reaction UI"
       required: true
-      default: "Rancher@9922!"
+      default: "Mob@9922!"
       type: "password"
     - variable: "REACTION_EMAIL"
       label: "Email address registered with Reaction"
