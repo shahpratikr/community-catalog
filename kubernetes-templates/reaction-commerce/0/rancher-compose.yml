@@ -21,12 +21,12 @@
     - variable: "REACTION_AUTH"
       label: "Password for reaction UI"
       required: true
-      default: "Mob@9922!"
+      default:
       type: "password"
     - variable: "REACTION_EMAIL"
-      label: "Email address registered with Reaction"
+      label: "Email address for reaction UI"
       required: true
-      default: "gshilamkar@infracloud.io"
+      default:
       type: "string"
     - variable: "PORT"
       label: Port on which Reaction should listen
