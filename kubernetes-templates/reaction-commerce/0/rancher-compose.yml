@@ -13,21 +13,21 @@
       required: true
       type: "string"
       default: mongodb://localhost:27017/reaction
-    - variable: "REACTION_USER"
-      label: "Username for reaction UI"
-      required: true
-      type: "string"
-      default: admin
-    - variable: "REACTION_AUTH"
-      label: "Password for reaction UI"
-      required: true
-      default:
-      type: "password"
     - variable: "REACTION_EMAIL"
       label: "Email address for reaction UI"
       required: true
       default:
       type: "string"
+    - variable: "REACTION_AUTH"
+      label: "Password for reaction UI"
+      required: true
+      default:
+      type: "password"
+    - variable: "REACTION_USER"
+      label: "Username for reaction UI"
+      required: true
+      type: "string"
+      default: admin
     - variable: "PORT"
       label: Port on which Reaction should listen
       default: 80
