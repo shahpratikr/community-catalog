@@ -14,12 +14,12 @@
       type: "string"
       default: mongodb://localhost:27017/reaction
     - variable: "REACTION_EMAIL"
-      label: "Email address for reaction UI"
+      label: "Valid email address"
       required: true
       default:
       type: "string"
     - variable: "REACTION_AUTH"
-      label: "Password for reaction UI"
+      label: "Password for entered email"
       required: true
       default:
       type: "password"
