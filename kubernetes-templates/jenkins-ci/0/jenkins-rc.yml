@@ -29,7 +29,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: PLUGINS
-        - value: "${PLUGINS}"
+          value: "${PLUGINS}"
       volumes:
       - name: jenkins-workspace
         emptyDir: {}
