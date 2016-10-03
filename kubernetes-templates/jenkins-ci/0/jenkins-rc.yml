@@ -15,10 +15,7 @@ spec:
         name: jenkins
     spec:
       containers:
-      - env:
-        - name: PLUGINS
-          value: "${PLUGINS}"
-        name: jenkins-primary
+      - name: jenkins-primary
         image: jenkins:1.642.2
         imagePullPolicy: Always
         ports:
@@ -27,15 +24,12 @@ spec:
         volumeMounts:
         - mountPath: /var/jenkins_home/
           name: jenkins-workspace
-
       - name: jenkins-plugins
         image: rancher/jenkins-plugins:v0.1.1
         imagePullPolicy: Always
-      - image: busybox
-        name: jenkins-datavolume
-        volumeMounts:
-        - mountPath: /var/jenkins_home/
-          name: jenkins-workspace
+        env:
+        - name: PLUGINS
+        - value: "${PLUGINS}"
       volumes:
       - name: jenkins-workspace
         emptyDir: {}
